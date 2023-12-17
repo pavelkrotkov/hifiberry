@@ -10,7 +10,7 @@ sudo apt-get update
 sudo apt-get -y upgrade
 
 # Install required packages
-sudo apt-get install -y autoconf automake avahi-daemon build-essential git libasound2-dev libavahi-client-dev libconfig-dev libdaemon-dev libpopt-dev libssl-dev libtool xmltoman
+sudo apt-get install -y autoconf automake avahi-daemon build-essential git libasound2-dev libavahi-client-dev libconfig-dev libdaemon-dev libpopt-dev libssl-dev libtool xmltoman rsyslog
 
 # Clone shairport-sync repository and build it
 git clone https://github.com/mikebrady/shairport-sync.git
@@ -32,6 +32,7 @@ wireless-power off" | sudo tee -a /etc/network/interfaces
 (crontab -l 2>/dev/null; echo "0 2 1 * * sudo apt update; sudo apt -y upgrade") | crontab -
 
 # Enable cron logs
+sudo systemctl enable rsyslog
 sudo sed -i '/#cron.*/s/^#//' /etc/rsyslog.conf
 
 # Reboot the system
