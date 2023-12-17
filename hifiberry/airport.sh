@@ -10,7 +10,7 @@ sudo apt-get update
 sudo apt-get -y upgrade
 
 # Install required packages
-sudo apt-get install autoconf automake avahi-daemon build-essential git libasound2-dev libavahi-client-dev libconfig-dev libdaemon-dev libpopt-dev libssl-dev libtool xmltoman
+sudo apt-get install -y autoconf automake avahi-daemon build-essential git libasound2-dev libavahi-client-dev libconfig-dev libdaemon-dev libpopt-dev libssl-dev libtool xmltoman
 
 # Clone shairport-sync repository and build it
 git clone https://github.com/mikebrady/shairport-sync.git
