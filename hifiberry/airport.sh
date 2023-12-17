@@ -28,6 +28,12 @@ sudo systemctl enable shairport-sync
 echo "# Disable wifi power management
 wireless-power off" | sudo tee -a /etc/network/interfaces
 
+# Add cron job for updates
+(crontab -l 2>/dev/null; echo "0 2 1 * * sudo apt update; sudo apt -y upgrade") | crontab -
+
+# Enable cron logs
+sudo sed -i '/#cron.*/s/^#//' /etc/rsyslog.conf
+
 # Reboot the system
 sudo reboot
 
