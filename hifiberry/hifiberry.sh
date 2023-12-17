@@ -62,6 +62,9 @@ do
     esac
 done
 
+# for linux > 5.4 disable the onboard EEPROM by adding
+echo "force_eeprom_read=0" | sudo tee -a /boot/config.txt
+
 # Create /etc/asound.conf
 echo "pcm.!default {
   type hw card 0
