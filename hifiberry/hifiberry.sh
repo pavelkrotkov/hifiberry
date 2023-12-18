@@ -5,8 +5,12 @@ set -e
 set -x
 trap 'echo "Last command executed: $BASH_COMMAND"' ERR
 
+# update system
+sudo apt update
+sudo apt -y upgrade
+
 # Comment out dtparam=audio=on
-sudo sed -i '/dtparam=audio=on/ s/^/#/' /boot/config.txt
+sudo sed -i '/dtparam=audio=on/ s/^/# /' /boot/config.txt
 
 # Modify dtoverlay lines
 sudo sed -i '/dtoverlay=vc4-fkms-v3d/ s/$/,audio=off/' /boot/config.txt
